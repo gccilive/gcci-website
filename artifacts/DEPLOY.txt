@@ -1,0 +1,15 @@
+Zenith mobile rendering update — 20 October 2026
+
+Upload the CONTENTS of zenith-mobile-fixed.zip into the existing /zenith/ web directory (usually public_html/zenith/). The archive contains index.html, assets/, route folders, and the hidden .htaccess file. Keep those paths together. Upload assets before replacing HTML. Preserve unrelated server files and keep previous hashed assets until the new build is verified.
+
+If the site uses a CDN or server page cache, purge cached /zenith/ HTML after uploading. Test https://gcci.live/zenith/ on the affected iPhone and scroll through the entire page, including galleries, registration, and the video. Image and logo carousels move slowly on phones only while visible; holding a carousel pauses it. Reduced-motion users retain static, swipeable rows. The video starts when the visitor taps play.
+
+The source code in this workspace is updated. Rebuild future changes with npm run build; deploy .output/public/ to /zenith/.
+
+Changes: reduced mobile compositor effects (blur, masks, moving image strips), retained static server-rendered content, deferred below-the-fold images, replaced automatic video download/playback with a small poster and manual playback. Desktop gallery animation remains enabled.
+
+Verification: production build, TypeScript, 13 rendering checks, 40 route/viewport checks across 320, 360, 390, 430 and 844px touch layouts, plus iPhone/desktop browser checks, mobile navigation and horizontal gallery scrolling, and content visibility with JavaScript disabled. Initial image requests fell from 137 to 3 in a controlled local Chrome test against the previous local build; the initial video request was eliminated. External requests were blocked during those local tests, so this is not a live network speed benchmark. The live site already used lazy images, and differs from the previous local build. The recording shows blank areas while scrolling; a rendering bottleneck is suspected. Actual affected-device verification after deployment is still required.
+
+Final refinements: identical countdown placeholders in server/initial browser HTML; current time appears after hydration; countdown pauses in hidden tabs. Mobile galleries hide duplicate loop cards. No-hover devices receive mobile rendering styles. Volunteer inline blink effects now obey mobile styles, and the deadline badge wraps on narrow screens.
+
+Carousel-only update: mobile carousel movement is restored using CSS transforms at about 20 pixels per second. IntersectionObserver enables it only in view, and hidden tabs stop it. The globe, particles, blur and other mobile effects remain static. No per-frame JavaScript or React updates were added.

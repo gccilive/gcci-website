@@ -1,0 +1,37 @@
+[
+  {
+    "width": 320,
+    "height": 740,
+    "routes": 8,
+    "errors": [],
+    "passed": true
+  },
+  {
+    "width": 360,
+    "height": 800,
+    "routes": 8,
+    "errors": [],
+    "passed": true
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "routes": 8,
+    "errors": [],
+    "passed": true
+  },
+  {
+    "width": 430,
+    "height": 932,
+    "routes": 8,
+    "errors": [],
+    "passed": true
+  },
+  {
+    "width": 844,
+    "height": 390,
+    "routes": 8,
+    "errors": [],
+    "passed": true
+  }
+]
